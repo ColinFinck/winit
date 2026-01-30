@@ -35,7 +35,7 @@ winit-core.workspace = true
 
 # XKB
 memmap2 = { workspace = true, optional = true }
-x11 = { workspace = true, features = ["xlib_xcb"] }
+x11 = { workspace = true, features = ["xlib_xcb"], optional = true }
 x11-dl = { workspace = true, optional = true }
 xkbcommon-dl = { workspace = true, optional = true }
 
