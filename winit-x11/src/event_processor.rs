@@ -14,11 +14,11 @@ use winit_core::event::{
 };
 use winit_core::keyboard::ModifiersState;
 use winit_core::window::WindowId;
-use x11_dl::xinput2::{
+use crate::x11::xinput2::{
     self, XIDeviceEvent, XIEnterEvent, XIFocusInEvent, XIFocusOutEvent, XIHierarchyEvent,
     XILeaveEvent, XIModifierState, XIRawEvent,
 };
-use x11_dl::xlib::{
+use crate::x11::xlib::{
     self, Display as XDisplay, Window as XWindow, XAnyEvent, XClientMessageEvent, XConfigureEvent,
     XDestroyWindowEvent, XEvent, XExposeEvent, XKeyEvent, XMapEvent, XPropertyEvent,
     XReparentEvent, XSelectionEvent, XVisibilityEvent, XkbAnyEvent, XkbStateRec,

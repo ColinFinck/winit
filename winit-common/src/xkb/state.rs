@@ -4,7 +4,9 @@ use std::os::raw::c_char;
 use std::ptr::NonNull;
 
 use smol_str::SmolStr;
-#[cfg(feature = "x11")]
+#[cfg(not(feature = "x11-dlopen"))]
+use x11::xlib_xcb::xcb_connection_t;
+#[cfg(feature = "x11-dlopen")]
 use x11_dl::xlib_xcb::xcb_connection_t;
 use xkbcommon_dl::{
     self as xkb, xkb_keycode_t, xkb_keysym_t, xkb_layout_index_t, xkb_state, xkb_state_component,

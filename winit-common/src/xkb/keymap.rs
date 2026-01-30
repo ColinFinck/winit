@@ -7,7 +7,9 @@ use std::ptr::{self, NonNull};
 use winit_core::keyboard::{
     Key, KeyCode, KeyLocation, NamedKey, NativeKey, NativeKeyCode, PhysicalKey,
 };
-#[cfg(feature = "x11")]
+#[cfg(not(feature = "x11-dlopen"))]
+use x11::xlib_xcb::xcb_connection_t;
+#[cfg(feature = "x11-dlopen")]
 use x11_dl::xlib_xcb::xcb_connection_t;
 use xkb::XKB_MOD_INVALID;
 use xkbcommon_dl::{

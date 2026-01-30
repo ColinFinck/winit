@@ -9,12 +9,20 @@ rust-version.workspace = true
 version.workspace = true
 
 [features]
+default = ["x11-dlopen"]
+
 # Event Handler
 event-handler = []
 
 # XKB
 wayland = ["dep:memmap2"]
-x11 = ["xkbcommon-dl?/x11", "dep:x11-dl"]
+
+# Default: Use dlopen() at runtime to load all libraries.
+x11-dlopen = ["x11/skip-buildrs", "dep:x11-dl"]
+# Alternative: Link at compile time to all libraries.
+x11-static = ["x11/static"]
+
+x11 = ["xkbcommon-dl?/x11"]
 xkb = ["dep:xkbcommon-dl", "dep:smol_str"]
 
 # CoreFoundation
@@ -27,6 +35,7 @@ winit-core.workspace = true
 
 # XKB
 memmap2 = { workspace = true, optional = true }
+x11 = { workspace = true, features = ["xlib_xcb"] }
 x11-dl = { workspace = true, optional = true }
 xkbcommon-dl = { workspace = true, optional = true }
 

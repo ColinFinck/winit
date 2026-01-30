@@ -13,6 +13,11 @@ macro_rules! os_error {
     ($error:expr) => {{ winit_core::error::OsError::new(line!(), file!(), $error) }};
 }
 
+#[cfg(not(feature = "dlopen"))]
+pub(crate) use x11;
+#[cfg(feature = "dlopen")]
+pub(crate) use x11_dl as x11;
+
 mod activation;
 mod atoms;
 mod dnd;
